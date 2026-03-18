@@ -12,7 +12,7 @@ const i18n = {
   translations: {
     zh: {
       "page-title": "原料技法映射工具原型",
-      "page-intro": "一个创意工具，通过对原材料信息的收集和整理，提出可能利用的烹饪技法。",
+      "page-intro": "一个创意工具，通过对原材料信息的收集和整理，提出可能利用的烹饪技法。<br>这个工具配备了 AI 工具，可以进行基础的信息查找以填写内容，但是不能保证真实，所有 AI 填写的内容都应该经过检查和信息检索。",
       "section-1-title": "一 对象定义",
       "section-1-desc": "这一部分用来确认我们到底在分析什么，以及分析的边界在哪里。<br><strong>针对任何像要研究的原材料，请仔细思考需要研究的部分，填写，以帮助AI理解更好。</strong><br><strong class=\"section-warning-text\">请保证已经填写清楚之后，再点击按钮。</strong>",
       "label-ingredient-name": "研究的原料是什么？",
@@ -478,7 +478,7 @@ const i18n = {
     },
     es: {
       "page-title": "Herramienta prototipo de mapeo de técnicas de ingredientes",
-      "page-intro": "Una herramienta creativa que recopila y organiza la informacion de la materia prima para proponer tecnicas de cocina que podrian aprovecharse.",
+      "page-intro": "Una herramienta creativa que recopila y organiza la informacion de la materia prima para proponer tecnicas de cocina que podrian aprovecharse.<br>Esta herramienta incluye funciones de IA para realizar busquedas basicas de informacion y ayudar a completar el contenido, pero no puede garantizar que la informacion sea real. Todo lo que rellene la IA debe revisarse y verificarse mediante busqueda de informacion.",
       "section-1-title": "1. Definición del objeto",
       "section-1-desc": "Esta parte sirve para confirmar exactamente que estamos analizando y cual es el limite del analisis.<br><strong>Para cualquier materia prima que quiera estudiar, piense con cuidado que parte necesita analizar y completela para ayudar a la IA a comprender mejor.</strong><br><strong class=\"section-warning-text\">Asegurese de haberla completado con claridad antes de hacer clic en el boton.</strong>",
       "label-ingredient-name": "¿Cuál es el ingrediente que se investiga?",
