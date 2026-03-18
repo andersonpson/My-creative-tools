@@ -1493,12 +1493,12 @@ window.techniqueRules = [
     directInputs: ["considerTraditionalTechniques_yes"],
     functionalSupportInputs: ["sweetSugar", "nonSweetSugar", "starchGroup", "acidicSubstances"],
     directWeightRules: [
-      "考虑祖传技术选择是时给予基础值"
+      "考虑传统技术选择是时给予基础值"
     ],
     functionalSupportWeightRules: [
       "糖类、淀粉类、酸性物质成立时上调"
     ],
-    invalidBoundary: "未考虑祖传技术时，不显示传统发酵处理。"
+    invalidBoundary: "未考虑传统技术时，不显示传统发酵处理。"
   },
   {
     id: "curing_and_maturation",
@@ -1507,12 +1507,12 @@ window.techniqueRules = [
     directInputs: ["considerTraditionalTechniques_yes"],
     functionalSupportInputs: ["saltingSupport", "acidicSubstances", "sweetSugar", "obviousTaste_yes"],
     directWeightRules: [
-      "考虑祖传技术选择是时给予基础值"
+      "考虑传统技术选择是时给予基础值"
     ],
     functionalSupportWeightRules: [
       "盐渍支持、酸、糖、明显味道成立时上调"
     ],
-    invalidBoundary: "未考虑祖传技术时，不显示腌渍熟成。"
+    invalidBoundary: "未考虑传统技术时，不显示腌渍熟成。"
   },
 
   {
@@ -1645,12 +1645,12 @@ window.techniqueRules = [
     directInputs: ["considerTraditionalTechniques_yes"],
     functionalSupportInputs: ["water", "freeWater", "extractableLiquid_yes"],
     directWeightRules: [
-      "考虑祖传技术选择是时给予基础值"
+      "考虑传统技术选择是时给予基础值"
     ],
     functionalSupportWeightRules: [
       "水、游离水、可提取液体成立时上调"
     ],
-    invalidBoundary: "未考虑祖传技术时，不显示盐渍处理。"
+    invalidBoundary: "未考虑传统技术时，不显示盐渍处理。"
   },
   {
     id: "acid_pickling_process",
@@ -1659,12 +1659,12 @@ window.techniqueRules = [
     directInputs: ["considerTraditionalTechniques_yes"],
     functionalSupportInputs: ["acidicSubstances", "water"],
     directWeightRules: [
-      "考虑祖传技术选择是时给予基础值"
+      "考虑传统技术选择是时给予基础值"
     ],
     functionalSupportWeightRules: [
       "酸性物质、水成立时上调"
     ],
-    invalidBoundary: "未考虑祖传技术时，不显示酸渍处理。"
+    invalidBoundary: "未考虑传统技术时，不显示酸渍处理。"
   },
   {
     id: "sugar_pickling_process",
@@ -1673,12 +1673,12 @@ window.techniqueRules = [
     directInputs: ["considerTraditionalTechniques_yes"],
     functionalSupportInputs: ["sweetSugar", "water"],
     directWeightRules: [
-      "考虑祖传技术选择是时给予基础值"
+      "考虑传统技术选择是时给予基础值"
     ],
     functionalSupportWeightRules: [
       "有甜味的糖、水成立时上调"
     ],
-    invalidBoundary: "未考虑祖传技术时，不显示糖渍处理。"
+    invalidBoundary: "未考虑传统技术时，不显示糖渍处理。"
   },
   {
     id: "smoking_process",
@@ -1687,12 +1687,12 @@ window.techniqueRules = [
     directInputs: ["considerTraditionalTechniques_yes"],
     functionalSupportInputs: ["fat", "directAroma", "obviousTaste_yes"],
     directWeightRules: [
-      "考虑祖传技术选择是时给予基础值"
+      "考虑传统技术选择是时给予基础值"
     ],
     functionalSupportWeightRules: [
       "脂肪、直接香气、明显味道成立时上调"
     ],
-    invalidBoundary: "未考虑祖传技术时，不显示烟熏处理。"
+    invalidBoundary: "未考虑传统技术时，不显示烟熏处理。"
   },
   {
     id: "oil_confit_process",
@@ -1701,12 +1701,12 @@ window.techniqueRules = [
     directInputs: ["considerTraditionalTechniques_yes"],
     functionalSupportInputs: ["fat", "solidFat", "flavorFat"],
     directWeightRules: [
-      "考虑祖传技术选择是时给予基础值"
+      "考虑传统技术选择是时给予基础值"
     ],
     functionalSupportWeightRules: [
       "脂肪、固态脂肪、风味脂肪成立时上调"
     ],
-    invalidBoundary: "未考虑祖传技术时，不显示油封处理。"
+    invalidBoundary: "未考虑传统技术时，不显示油封处理。"
   },
   {
     id: "alkaline_process",
@@ -1715,12 +1715,12 @@ window.techniqueRules = [
     directInputs: ["considerTraditionalTechniques_yes"],
     functionalSupportInputs: ["konjacGlucomannan", "gelGroup", "phSensitivePigment"],
     directWeightRules: [
-      "考虑祖传技术选择是时给予基础值"
+      "考虑传统技术选择是时给予基础值"
     ],
     functionalSupportWeightRules: [
       "魔芋葡甘聚糖、凝胶类、pH敏感色素成立时上调"
     ],
-    invalidBoundary: "未考虑祖传技术时，不显示碱处理。"
+    invalidBoundary: "未考虑传统技术时，不显示碱处理。"
   },
   {
     id: "wrapped_cooking_process",
@@ -1729,12 +1729,12 @@ window.techniqueRules = [
     directInputs: ["considerTraditionalTechniques_yes"],
     functionalSupportInputs: ["acceptShapeChange_yes", "fillableSpace_yes"],
     directWeightRules: [
-      "考虑祖传技术选择是时给予基础值"
+      "考虑传统技术选择是时给予基础值"
     ],
     functionalSupportWeightRules: [
       "接受形态改变、内部空间成立时上调"
     ],
-    invalidBoundary: "未考虑祖传技术时，不显示包裹烹饪。"
+    invalidBoundary: "未考虑传统技术时，不显示包裹烹饪。"
   },
   {
     id: "sun_drying_process",
@@ -1743,12 +1743,12 @@ window.techniqueRules = [
     directInputs: ["considerTraditionalTechniques_yes"],
     functionalSupportInputs: ["water", "freeWater", "dehydratedState"],
     directWeightRules: [
-      "考虑祖传技术选择是时给予基础值"
+      "考虑传统技术选择是时给予基础值"
     ],
     functionalSupportWeightRules: [
       "水、游离水、脱水成立时上调"
     ],
-    invalidBoundary: "未考虑祖传技术时，不显示日晒处理。"
+    invalidBoundary: "未考虑传统技术时，不显示日晒处理。"
   },
   {
     id: "freeze_thaw_process",
@@ -1757,12 +1757,12 @@ window.techniqueRules = [
     directInputs: ["considerTraditionalTechniques_yes"],
     functionalSupportInputs: ["water", "freeWater", "boundWater"],
     directWeightRules: [
-      "考虑祖传技术选择是时给予基础值"
+      "考虑传统技术选择是时给予基础值"
     ],
     functionalSupportWeightRules: [
       "水、游离水、结合水成立时上调"
     ],
-    invalidBoundary: "未考虑祖传技术时，不显示冻融处理。"
+    invalidBoundary: "未考虑传统技术时，不显示冻融处理。"
   },
   {
     id: "ember_heating_process",
@@ -1771,12 +1771,12 @@ window.techniqueRules = [
     directInputs: ["considerTraditionalTechniques_yes"],
     functionalSupportInputs: ["hardTexture", "obviousTaste_yes", "fat"],
     directWeightRules: [
-      "考虑祖传技术选择是时给予基础值"
+      "考虑传统技术选择是时给予基础值"
     ],
     functionalSupportWeightRules: [
       "坚硬、明显味道、脂肪成立时上调"
     ],
-    invalidBoundary: "未考虑祖传技术时，不显示余烬加热。"
+    invalidBoundary: "未考虑传统技术时，不显示余烬加热。"
   },
   {
     id: "alcohol_immersion_process",
@@ -1785,12 +1785,12 @@ window.techniqueRules = [
     directInputs: ["considerTraditionalTechniques_yes"],
     functionalSupportInputs: ["directAroma", "obviousTaste_yes", "fat"],
     directWeightRules: [
-      "考虑祖传技术选择是时给予基础值"
+      "考虑传统技术选择是时给予基础值"
     ],
     functionalSupportWeightRules: [
       "直接香气、明显味道、脂肪成立时上调"
     ],
-    invalidBoundary: "未考虑祖传技术时，不显示酒液浸渍。"
+    invalidBoundary: "未考虑传统技术时，不显示酒液浸渍。"
   },
   {
     id: "brine_stew_process",
@@ -1799,12 +1799,12 @@ window.techniqueRules = [
     directInputs: ["considerTraditionalTechniques_yes"],
     functionalSupportInputs: ["water", "acidicSubstances", "sweetSugar", "obviousTaste_yes"],
     directWeightRules: [
-      "考虑祖传技术选择是时给予基础值"
+      "考虑传统技术选择是时给予基础值"
     ],
     functionalSupportWeightRules: [
       "水、酸、糖、明显味道成立时上调"
     ],
-    invalidBoundary: "未考虑祖传技术时，不显示卤渍处理。"
+    invalidBoundary: "未考虑传统技术时，不显示卤渍处理。"
   },
   {
     id: "calcium_setting_process",
@@ -1813,12 +1813,12 @@ window.techniqueRules = [
     directInputs: ["considerTraditionalTechniques_yes"],
     functionalSupportInputs: ["pectinGel", "alginate", "strongGel"],
     directWeightRules: [
-      "考虑祖传技术选择是时给予基础值"
+      "考虑传统技术选择是时给予基础值"
     ],
     functionalSupportWeightRules: [
       "果胶、海藻酸盐、强凝胶成立时上调"
     ],
-    invalidBoundary: "未考虑祖传技术时，不显示钙化定型。"
+    invalidBoundary: "未考虑传统技术时，不显示钙化定型。"
   },
   {
     id: "soaking_deastringency_process",
@@ -1827,12 +1827,12 @@ window.techniqueRules = [
     directInputs: ["considerTraditionalTechniques_yes"],
     functionalSupportInputs: ["astringencySupport", "bitternessSupport", "water"],
     directWeightRules: [
-      "考虑祖传技术选择是时给予基础值"
+      "考虑传统技术选择是时给予基础值"
     ],
     functionalSupportWeightRules: [
       "收敛感来源、苦味来源、水成立时上调"
     ],
-    invalidBoundary: "未考虑祖传技术时，不显示浸泡脱涩处理。"
+    invalidBoundary: "未考虑传统技术时，不显示浸泡脱涩处理。"
   },
   {
   id: "acid_base_color_adjustment",
