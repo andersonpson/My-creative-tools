@@ -18,9 +18,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const reviewBackButton = document.getElementById("review-back-button");
   const reviewContinueButton = document.getElementById("review-continue-button");
   const resultBackButton = document.getElementById("result-back-button");
+  let fieldIdentityCounter = 0;
 
   function t(key, params = {}) {
     return i18n.t(key, params);
+  }
+
+  function getNextFieldIdentity(prefix) {
+    fieldIdentityCounter += 1;
+    return `${prefix}-${fieldIdentityCounter}`;
   }
 
   function getItemText(item) {
@@ -191,6 +197,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const select = document.createElement("select");
     select.className = "amount-field-select";
+    const selectIdentity = getNextFieldIdentity("amount-select");
+    select.id = selectIdentity;
+    select.name = selectIdentity;
 
     const emptyOption = document.createElement("option");
     emptyOption.value = "";
@@ -244,6 +253,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const checkbox = document.createElement("input");
       checkbox.type = "checkbox";
       checkbox.dataset.itemId = child.id;
+      checkbox.id = getNextFieldIdentity("composition-child");
+      checkbox.name = checkbox.id;
 
       const text = document.createElement("span");
       text.textContent = getItemText(child);
@@ -291,6 +302,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.dataset.itemId = item.id;
+    checkbox.id = getNextFieldIdentity("composition-leaf");
+    checkbox.name = checkbox.id;
 
     const text = document.createElement("span");
     text.textContent = getItemText(item);
@@ -337,6 +350,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const checkbox = document.createElement("input");
       checkbox.type = "checkbox";
       checkbox.dataset.itemId = child.id;
+      checkbox.id = getNextFieldIdentity("composition-mixed-parent");
+      checkbox.name = checkbox.id;
 
       const text = document.createElement("span");
       text.textContent = getItemText(child);
@@ -371,6 +386,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const groupCheckbox = document.createElement("input");
             groupCheckbox.type = "checkbox";
             groupCheckbox.dataset.itemId = grandChild.id;
+            groupCheckbox.id = getNextFieldIdentity("composition-mixed-group");
+            groupCheckbox.name = groupCheckbox.id;
 
             const groupText = document.createElement("span");
             groupText.textContent = getItemText(grandChild);
@@ -492,6 +509,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const mainCheckbox = document.createElement("input");
       mainCheckbox.type = "checkbox";
       mainCheckbox.dataset.categoryId = category.id;
+      mainCheckbox.id = getNextFieldIdentity("composition-category");
+      mainCheckbox.name = mainCheckbox.id;
 
       const mainText = document.createElement("span");
       mainText.textContent = getItemText(category);
@@ -624,6 +643,7 @@ document.addEventListener("DOMContentLoaded", () => {
       yesRadio.name = `judgement-option-${index}`;
       yesRadio.value = "yes";
       yesRadio.dataset.judgementId = option.id;
+      yesRadio.id = `judgement-option-${index}-yes`;
 
       const yesText = document.createElement("span");
       yesText.textContent = t("option-yes");
@@ -639,6 +659,7 @@ document.addEventListener("DOMContentLoaded", () => {
       noRadio.name = `judgement-option-${index}`;
       noRadio.value = "no";
       noRadio.dataset.judgementId = option.id;
+      noRadio.id = `judgement-option-${index}-no`;
 
       const noText = document.createElement("span");
       noText.textContent = t("option-no");
