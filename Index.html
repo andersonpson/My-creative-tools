@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="page-title">原料技法映射工具原型</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="i18n.js"></script>
+</head>
+<body>
+  <div class="page">
+    <header class="page-header">
+      <h1 data-i18n="page-title">原料技法映射工具原型</h1>
+      <p class="page-intro" data-i18n="page-intro">一个创意工具，通过对原材料信息的收集和整理，提出可能利用的烹饪技法。</p>
+    </header>
+
+    <main class="step-page-container" id="step-page-container">
+      <div class="step-page is-active" id="input-step-page">
+        <div class="form-layout" id="form-layout">
+      <section class="form-section" id="object-definition-section">
+        <div class="section-header">
+          <h2 data-i18n="section-1-title">一 对象定义</h2>
+          <p data-i18n-html="section-1-desc">这一部分用来确认我们到底在分析什么，以及分析的边界在哪里。<br><strong>针对任何像要研究的原材料，请仔细思考需要研究的部分，填写，以帮助ai理解更好。</strong><br><strong class="section-warning-text">请保证已经填写清楚之后，再点击按钮。</strong></p>
+        </div>
+
+        <div class="section-body" id="object-definition-fields">
+          <div class="field-group">
+            <label for="ingredient-name" data-i18n="label-ingredient-name">研究的原料是什么？</label>
+            <input type="text" id="ingredient-name" name="ingredientName" data-i18n-placeholder="placeholder-ingredient-name" placeholder="请输入原料名称">
+          </div>
+
+          <div class="field-group">
+            <label for="scientific-name" data-i18n="label-scientific-name">科学名</label>
+            <input type="text" id="scientific-name" name="scientificName" data-i18n-placeholder="placeholder-scientific-name" placeholder="请输入科学名">
+          </div>
+
+          <div class="field-group">
+            <span class="field-label" data-i18n="label-separable-part">是否存在可以分离的部分？</span>
+            <div class="radio-group">
+              <label>
+                <input type="radio" name="hasSeparablePart" value="yes">
+                <span data-i18n="option-yes">是</span>
+              </label>
+              <label>
+                <input type="radio" name="hasSeparablePart" value="no">
+                <span data-i18n="option-no">否</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="field-group" id="separable-parts-group">
+            <label for="separable-parts" data-i18n="label-separable-parts-detail">若是，可分离的部分有哪些？</label>
+            <textarea id="separable-parts" name="separableParts" rows="3" data-i18n-placeholder="placeholder-separable-parts" placeholder="例如：皮、脂肪层、肌肉、籽、叶、根"></textarea>
+          </div>
+
+          <div class="field-group" id="study-object-group">
+            <label for="study-object" data-i18n="label-study-object">在这个工具中，选择其中的一个作为研究对象，选择的是什么？</label>
+            <input type="text" id="study-object" name="studyObject" data-i18n-placeholder="placeholder-study-object" placeholder="请输入研究对象">
+          </div>
+
+          <div class="field-group action-group">
+            <button type="button" id="ai-prefill-button" data-i18n="btn-ai-prefill">AI 预填</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="form-section" id="composition-section">
+        <div class="section-header">
+          <h2 data-i18n="section-2-title">二 原料成分</h2>
+          <p data-i18n="section-2-desc">这一部分用来判断原料里有哪些关键成分，以及它们大致处在什么水平。请注意填写含量，以及相对含量。成分的含量是针对于原材料整体来说的，而相对含量则是针对于成分的大类。</p>
+        </div>
+
+        <div class="composition-summary" id="composition-summary" aria-live="polite"></div>
+        <div class="section-body" id="composition-fields">
+          <!-- 后续放置：蛋白质、脂肪、糖、水、色素、酶、香气物质、酸性物质、独特成分 -->
+        </div>
+      </section>
+
+      <section class="form-section" id="texture-section">
+        <div class="section-header">
+          <h2 data-i18n="section-3-title">三 原料质地</h2>
+          <p data-i18n="section-3-desc">这一部分用来描述原料当前最明显的口感和结构表现。</p>
+        </div>
+
+        <div class="section-body" id="texture-fields">
+          <!-- 后续放置：坚硬、柔软易碎、柔软有韧性、脆 -->
+        </div>
+      </section>
+
+      <section class="form-section" id="judgement-section">
+        <div class="section-header">
+          <h2 data-i18n="section-4-title">四 判断项</h2>
+          <p data-i18n="section-4-desc">这一部分用来补充成分之外的重要信息。</p>
+        </div>
+
+        <div class="section-body" id="judgement-fields">
+          <!-- 后续放置：明显味道、可填充空间、可提取液体、是否接受形态改变、是否考虑祖传技术新应用 -->
+        </div>
+      </section>
+        </div>
+
+        <div class="page-action-bar">
+          <button type="button" id="open-review-button" data-i18n="btn-next-step">进入下一步</button>
+        </div>
+      </div>
+
+      <div class="step-page" id="review-step-page" hidden>
+        <section class="form-section review-section" id="review-section">
+          <div class="section-header">
+            <h2 data-i18n="section-5-title">五 确认当前分析对象</h2>
+            <p data-i18n="section-5-desc">这一部分用来检查系统对原料和研究对象的理解是否正确。</p>
+          </div>
+
+          <div class="section-body" id="review-panel-container">
+            <!-- 中间确认层内容由 reviewView.js 动态生成 -->
+          </div>
+
+          <div class="section-body review-action-group">
+            <button type="button" id="review-back-button" data-i18n="btn-back-modify">返回修改</button>
+            <button type="button" id="review-continue-button" data-i18n="btn-continue-next">继续下一步</button>
+          </div>
+        </section>
+      </div>
+
+      <div class="step-page" id="result-step-page" hidden>
+        <section class="form-section result-section" id="result-section">
+          <div class="section-header">
+            <h2 data-i18n="section-6-title">六 技法输出</h2>
+            <p data-i18n="section-6-desc">这一部分用来展示根据当前输入推导出的技法方向和可展开的结果。</p>
+          </div>
+
+          <div class="section-body" id="result-panel-container">
+            <!-- 技法输出层内容由 resultView.js 动态生成 -->
+          </div>
+
+          <div class="section-body result-action-group">
+            <button type="button" id="result-back-button" data-i18n="btn-back-confirm">返回确认</button>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="resultData.js"></script>
+  <script src="rules.js"></script>
+  <script src="techniqueDescriptions.js"></script>
+  <script src="app.js"></script>
+  <script src="prompt.js"></script>
+  <script src="ai.js"></script>
+  <script src="stateCollector.js"></script>
+  <script src="reviewFormatter.js"></script>
+  <script src="reviewView.js"></script>
+  <script src="normalizer.js"></script>
+  <script src="engine.js"></script>
+  <script src="resultView.js"></script>
+  <script src="i18nUtils.js"></script>
+</body>
+</html>
