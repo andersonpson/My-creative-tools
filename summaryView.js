@@ -216,7 +216,7 @@ function buildTechniqueGroupsList(engineResult = {}) {
 
       const score = document.createElement("div");
       score.className = "summary-technique-meta";
-      score.textContent = `${result.status === "direct" ? i18n.t("summary-technique-direct") : i18n.t("summary-technique-support")} · ${i18n.t("summary-technique-score", { score: result.totalScore || 0 })}`;
+      score.textContent = i18n.t("summary-technique-score", { score: result.totalScore || 0 });
       item.appendChild(score);
 
       const descriptionText = getTechniqueDisplayDescription(result);
@@ -231,46 +231,6 @@ function buildTechniqueGroupsList(engineResult = {}) {
         description.textContent = descriptionText;
         item.appendChild(description);
       }
-
-      const basisTitle = document.createElement("div");
-      basisTitle.className = "summary-technique-label";
-      basisTitle.textContent = i18n.t("summary-technique-basis-title");
-      item.appendChild(basisTitle);
-
-      const basisList = document.createElement("div");
-      basisList.className = "summary-basis-list";
-
-      if ((result.directMatches || []).length > 0) {
-        const direct = document.createElement("div");
-        direct.className = "summary-basis-item";
-        direct.textContent = i18n.t("summary-technique-direct-basis", {
-          value: result.directMatches.map(formatSourceMatch).join("、")
-        });
-        basisList.appendChild(direct);
-      }
-
-      if ((result.supportMatches || []).length > 0) {
-        const support = document.createElement("div");
-        support.className = "summary-basis-item";
-        support.textContent = i18n.t("summary-technique-support-basis", {
-          value: result.supportMatches.map(formatSourceMatch).join("、")
-        });
-        basisList.appendChild(support);
-      }
-
-      const allRules = [
-        ...(result.directWeightRules || []),
-        ...(result.functionalSupportWeightRules || [])
-      ].filter(Boolean);
-
-      if (allRules.length > 0) {
-        const rules = document.createElement("div");
-        rules.className = "summary-basis-item";
-        rules.textContent = i18n.t("summary-technique-weight-rules", { value: allRules.join("；") });
-        basisList.appendChild(rules);
-      }
-
-      item.appendChild(basisList);
       groupSection.appendChild(item);
     });
 
