@@ -37,6 +37,18 @@ function getSummaryLevelLabel(level) {
   return mapping[level] ? i18n.t(mapping[level]) : level;
 }
 
+function getTechniqueCategoryDisplayLabel(categoryId) {
+  const categories = typeof getTechniqueCategoryDisplay === "function"
+    ? getTechniqueCategoryDisplay()
+    : (window.techniqueCategoryDisplay || []).map((category) => ({
+        ...category,
+        displayLabel: category.i18nKey ? i18n.t(category.i18nKey) : (category.displayLabel || category.label || category.id)
+      }));
+
+  const matched = categories.find((category) => category.id === categoryId);
+  return matched?.displayLabel || matched?.label || categoryId || i18n.t("category-unnamed");
+}
+
 function getTechniqueDisplayTitle(result = {}) {
   const techniqueConfig = window.techniqueDescriptions?.[result.id];
   return techniqueConfig?.labelKey ? i18n.t(techniqueConfig.labelKey) : result.label || i18n.t("technique-unnamed");
@@ -145,7 +157,7 @@ function buildSummaryOverview(formState = {}, engineResult = {}) {
 
   const topCategories = (engineResult.groupedResults || [])
     .slice(0, 3)
-    .map((group) => group.categoryLabel)
+    .map((group) => getTechniqueCategoryDisplayLabel(group.categoryId))
     .filter(Boolean)
     .join("、");
 
@@ -202,7 +214,7 @@ function buildTechniqueGroupsList(engineResult = {}) {
 
     const groupTitle = document.createElement("h4");
     groupTitle.className = "summary-technique-group-title";
-    groupTitle.textContent = group.categoryLabel || group.categoryId || i18n.t("category-unnamed");
+    groupTitle.textContent = getTechniqueCategoryDisplayLabel(group.categoryId);
     groupSection.appendChild(groupTitle);
 
     (group.items || []).forEach((result) => {
