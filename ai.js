@@ -63,18 +63,32 @@ async function requestAiPrefill(formData) {
     ? window.aiPromptConfig.buildUserPrompt(formData)
     : "";
 
-  const response = await fetch("/api/prefill", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      systemPrompt,
-      userPrompt
-    })
-  });
+  let response;
 
-  const data = await response.json();
+  try {
+    response = await fetch("/api/prefill", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        systemPrompt,
+        userPrompt
+      })
+    });
+  } catch (error) {
+    throw new Error(i18n.t("error-ai-network"), { cause: error });
+  }
+
+  const responseText = await response.text();
+  let data = null;
+
+  try {
+    data = responseText ? JSON.parse(responseText) : {};
+  } catch (error) {
+    console.error("AI prefill returned non-JSON response:", responseText);
+    throw new Error(i18n.t("error-ai-invalid-response"), { cause: error });
+  }
 
   if (!response.ok || !data.ok) {
     throw new Error(data.error || "AI request failed.");
@@ -355,7 +369,7 @@ function initializeAiPrefill() {
       window.alert(i18n.t("ai-prefill-success"));
     } catch (error) {
       console.error("AI prefill error:", error);
-      window.alert(i18n.t("ai-prefill-failure"));
+      window.alert(error?.message || i18n.t("ai-prefill-failure"));
     } finally {
       setAiLoadingState(false);
     }

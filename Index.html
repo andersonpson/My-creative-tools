@@ -20,7 +20,7 @@
       <section class="form-section" id="object-definition-section">
         <div class="section-header">
           <h2 data-i18n="section-1-title">一 对象定义</h2>
-          <p data-i18n-html="section-1-desc">这一部分用来确认我们到底在分析什么，以及分析的边界在哪里。<br><strong>针对任何像要研究的原材料，请仔细思考需要研究的部分，填写，以帮助ai理解更好。</strong><br><strong class="section-warning-text">请保证已经填写清楚之后，再点击按钮。</strong></p>
+          <p data-i18n-html="section-1-desc">这一部分用来确认我们到底在分析什么，以及分析的边界在哪里。<br><strong>针对任何想要研究的原材料，请仔细思考需要研究的部分，填写，以帮助ai理解更好。</strong><br><strong class="section-warning-text">请保证已经填写清楚之后，再点击按钮。</strong></p>
         </div>
 
         <div class="section-body" id="object-definition-fields">
@@ -135,6 +135,25 @@
 
           <div class="section-body result-action-group">
             <button type="button" id="result-back-button" data-i18n="btn-back-confirm">返回确认</button>
+            <button type="button" id="open-summary-button" data-i18n="btn-open-summary">生成摘要与完整清单</button>
+          </div>
+        </section>
+      </div>
+
+      <div class="step-page" id="summary-step-page" hidden>
+        <section class="form-section summary-section" id="summary-section">
+          <div class="section-header">
+            <h2 data-i18n="section-7-title">七 摘要与完整清单</h2>
+            <p data-i18n="section-7-desc">这一部分会整理当前分析的摘要、结构化完整信息，以及按技法大类展开的详细结果，方便保存与导出。</p>
+          </div>
+
+          <div class="section-body" id="summary-panel-container">
+            <!-- 摘要与完整清单内容由 summaryView.js 动态生成 -->
+          </div>
+
+          <div class="section-body summary-action-group">
+            <button type="button" id="summary-back-button" data-i18n="btn-back-results">返回结果</button>
+            <button type="button" id="summary-print-button" data-i18n="btn-save-pdf">保存 PDF</button>
           </div>
         </section>
       </div>
@@ -154,6 +173,7 @@
   <script src="normalizer.js"></script>
   <script src="engine.js"></script>
   <script src="resultView.js"></script>
+  <script src="summaryView.js"></script>
   <script src="i18nUtils.js"></script>
 </body>
 </html>

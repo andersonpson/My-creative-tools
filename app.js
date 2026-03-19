@@ -10,15 +10,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const inputStepPage = document.getElementById("input-step-page");
   const reviewStepPage = document.getElementById("review-step-page");
   const resultStepPage = document.getElementById("result-step-page");
+  const summaryStepPage = document.getElementById("summary-step-page");
   const reviewSection = document.getElementById("review-section");
   const resultSection = document.getElementById("result-section");
+  const summarySection = document.getElementById("summary-section");
   const reviewPanelContainer = document.getElementById("review-panel-container");
   const resultPanelContainer = document.getElementById("result-panel-container");
+  const summaryPanelContainer = document.getElementById("summary-panel-container");
   const openReviewButton = document.getElementById("open-review-button");
   const reviewBackButton = document.getElementById("review-back-button");
   const reviewContinueButton = document.getElementById("review-continue-button");
   const resultBackButton = document.getElementById("result-back-button");
+  const openSummaryButton = document.getElementById("open-summary-button");
+  const summaryBackButton = document.getElementById("summary-back-button");
+  const summaryPrintButton = document.getElementById("summary-print-button");
   let fieldIdentityCounter = 0;
+  let latestFormState = null;
+  let latestEngineResult = null;
 
   function t(key, params = {}) {
     return i18n.t(key, params);
@@ -700,7 +708,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function hideAllStepPages() {
-    [inputStepPage, reviewStepPage, resultStepPage].forEach((page) => {
+    [inputStepPage, reviewStepPage, resultStepPage, summaryStepPage].forEach((page) => {
       if (!page) {
         return;
       }
@@ -742,6 +750,17 @@ document.addEventListener("DOMContentLoaded", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
+  function showSummaryStepPage() {
+    if (!summaryStepPage) {
+      return;
+    }
+
+    hideAllStepPages();
+    summaryStepPage.hidden = false;
+    summaryStepPage.classList.add("is-active");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
   function renderReviewPanel() {
     if (!reviewPanelContainer || !window.stateCollector?.collectCurrentFormState || !window.reviewView?.buildReadableReviewPanel) {
       return;
@@ -761,10 +780,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const formState = window.stateCollector.collectCurrentFormState();
     const engineResult = window.techniqueEngine.runTechniqueEngine(formState);
+    latestFormState = formState;
+    latestEngineResult = engineResult;
     const resultPanel = window.resultView.buildTechniqueResultPanel(engineResult);
 
     resultPanelContainer.innerHTML = "";
     resultPanelContainer.appendChild(resultPanel);
+  }
+
+  function renderSummaryPanel() {
+    if (!summaryPanelContainer || !window.summaryView?.buildExportSummaryPanel) {
+      return;
+    }
+
+    const formState = latestFormState || window.stateCollector?.collectCurrentFormState?.();
+    const engineResult = latestEngineResult || (formState && window.techniqueEngine?.runTechniqueEngine
+      ? window.techniqueEngine.runTechniqueEngine(formState)
+      : null);
+
+    if (!formState || !engineResult) {
+      return;
+    }
+
+    latestFormState = formState;
+    latestEngineResult = engineResult;
+
+    const panel = window.summaryView.buildExportSummaryPanel(formState, engineResult);
+    summaryPanelContainer.innerHTML = "";
+    summaryPanelContainer.appendChild(panel);
   }
 
   function setRadioValue(name, value) {
@@ -912,6 +955,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (resultStepPage?.classList.contains("is-active")) {
       renderResultPanel();
     }
+
+    if (summaryStepPage?.classList.contains("is-active")) {
+      renderSummaryPanel();
+    }
   }
 
   function openReviewStep() {
@@ -942,6 +989,24 @@ document.addEventListener("DOMContentLoaded", () => {
     showReviewStepPage();
   }
 
+  function openSummaryStep() {
+    renderSummaryPanel();
+    showSummaryStepPage();
+  }
+
+  function returnToResultStep() {
+    showResultStepPage();
+  }
+
+  function printSummaryPage() {
+    if (!summaryStepPage?.classList.contains("is-active")) {
+      renderSummaryPanel();
+      showSummaryStepPage();
+    }
+
+    window.print();
+  }
+
   separablePartRadios.forEach((radio) => {
     radio.addEventListener("change", updateSeparablePartVisibility);
   });
@@ -962,6 +1027,18 @@ document.addEventListener("DOMContentLoaded", () => {
     resultBackButton.addEventListener("click", returnToReviewStep);
   }
 
+  if (openSummaryButton) {
+    openSummaryButton.addEventListener("click", openSummaryStep);
+  }
+
+  if (summaryBackButton) {
+    summaryBackButton.addEventListener("click", returnToResultStep);
+  }
+
+  if (summaryPrintButton) {
+    summaryPrintButton.addEventListener("click", printSummaryPage);
+  }
+
   document.addEventListener("translationsUpdated", rerenderDynamicSectionsPreservingState);
 
   updateSeparablePartVisibility();
@@ -972,6 +1049,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   if (resultSection) {
     resultSection.hidden = false;
+  }
+  if (summarySection) {
+    summarySection.hidden = false;
   }
 
   renderCompositionCategories();
