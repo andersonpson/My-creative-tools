@@ -1,12 +1,16 @@
-function createTechniqueItem(result) {
+function createTechniqueItem(result, categoryIndex, itemIndex) {
   const item = document.createElement("article");
   item.className = "technique-item-card";
 
   const techniqueConfig = window.techniqueDescriptions?.[result.id];
+  const itemNumber = typeof categoryIndex === "number" && typeof itemIndex === "number"
+    ? `${categoryIndex + 1}.${itemIndex + 1}`
+    : "";
 
   const title = document.createElement("h4");
   title.className = "technique-item-title";
-  title.textContent = techniqueConfig?.labelKey ? i18n.t(techniqueConfig.labelKey) : result.label || i18n.t("technique-unnamed");
+  const titleText = techniqueConfig?.labelKey ? i18n.t(techniqueConfig.labelKey) : result.label || i18n.t("technique-unnamed");
+  title.textContent = itemNumber ? `${itemNumber} ${titleText}` : titleText;
   item.appendChild(title);
 
   const descriptionText = techniqueConfig?.descriptionKey ? i18n.t(techniqueConfig.descriptionKey) : "";
@@ -20,7 +24,7 @@ function createTechniqueItem(result) {
   return item;
 }
 
-function createTechniqueCategorySection(group) {
+function createTechniqueCategorySection(group, categoryIndex) {
   const section = document.createElement("section");
   section.className = "technique-category-section";
 
@@ -33,7 +37,9 @@ function createTechniqueCategorySection(group) {
 
   const title = document.createElement("h3");
   title.className = "technique-category-title";
-  title.textContent = group.categoryLabel || group.categoryId || i18n.t("category-unnamed");
+  const categoryNumber = typeof categoryIndex === "number" ? `${categoryIndex + 1}.` : "";
+  const categoryTitle = group.categoryLabel || group.categoryId || i18n.t("category-unnamed");
+  title.textContent = categoryNumber ? `${categoryNumber} ${categoryTitle}` : categoryTitle;
 
   const count = document.createElement("div");
   count.className = "technique-category-count";
@@ -52,8 +58,8 @@ function createTechniqueCategorySection(group) {
   content.className = "technique-category-content";
   content.style.display = "none";
 
-  group.items.forEach((result) => {
-    content.appendChild(createTechniqueItem(result));
+  group.items.forEach((result, itemIndex) => {
+    content.appendChild(createTechniqueItem(result, categoryIndex, itemIndex));
   });
 
   header.addEventListener("click", () => {
@@ -82,8 +88,8 @@ function buildTechniqueResultPanel(engineResult = {}) {
     return panel;
   }
 
-  groups.forEach((group) => {
-    panel.appendChild(createTechniqueCategorySection(group));
+  groups.forEach((group, categoryIndex) => {
+    panel.appendChild(createTechniqueCategorySection(group, categoryIndex));
   });
 
   return panel;
