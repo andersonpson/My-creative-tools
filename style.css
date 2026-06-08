@@ -1566,6 +1566,31 @@ body.creative-tool-page h4 {
   box-shadow: none;
 }
 
+.creative-tool-page .amount-field,
+.creative-tool-page .composition-main-amount-field {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+  width: min(100%, 320px);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.creative-tool-page .composition-main-amount-field {
+  width: min(100%, 340px);
+}
+
+.creative-tool-page .amount-field-label {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.25;
+  letter-spacing: 0;
+  color: var(--muted);
+  white-space: normal;
+}
+
 .creative-tool-page .texture-option-row,
 .creative-tool-page .judgement-option-row {
   grid-template-columns: minmax(0, 1fr) auto;
@@ -1636,14 +1661,35 @@ body.creative-tool-page h4 {
 }
 
 .creative-tool-page .amount-field-select {
-  border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.82);
+  min-height: 56px;
+  padding: 0 18px;
+  border: 1px solid rgba(48, 43, 37, 0.18);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.86);
+  font-size: 1.02rem;
+  line-height: 1.2;
+  box-shadow: none;
 }
 
 .creative-tool-page .amount-field.is-invalid {
-  border-color: rgba(143, 65, 40, 0.45);
-  background: rgba(143, 65, 40, 0.08);
+  border-color: transparent;
+  background: transparent;
   box-shadow: none;
+}
+
+.creative-tool-page .amount-field.is-invalid .amount-field-label {
+  color: #a84128;
+}
+
+.creative-tool-page .amount-field.is-invalid .amount-field-select {
+  border-color: rgba(168, 65, 40, 0.65);
+  background: rgba(255, 250, 248, 0.92);
+}
+
+.creative-tool-page .amount-field-error {
+  font-size: 0.88rem;
+  line-height: 1.35;
+  color: #a84128;
 }
 
 .creative-tool-page .page-action-bar,
