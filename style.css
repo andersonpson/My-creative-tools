@@ -1,6 +1,7 @@
 @font-face {
   font-family: "PrototypeOldSong";
-  src: local("KingHwa_OldSong"),
+  src: url("./assets/fonts/京華老宋体v3.0.ttf") format("truetype"),
+       local("KingHwa_OldSong"),
        local("KingHwa OldSong"),
        local("京華老宋体"),
        local("京华老宋体");
@@ -1255,24 +1256,15 @@ body.creative-tool-page {
   font-family: var(--font-ui-zh);
   color: var(--ink);
   background:
-    radial-gradient(circle at top left, rgba(49, 75, 68, 0.12), transparent 24%),
-    radial-gradient(circle at bottom right, rgba(120, 92, 54, 0.08), transparent 28%),
-    linear-gradient(180deg, #f1ede4 0%, #e7e1d7 100%);
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.68), transparent 28%),
+    linear-gradient(180deg, #f2ede5 0%, #e7e0d4 100%);
   font-variant-numeric: tabular-nums;
-  line-height: 1.45;
-  letter-spacing: 0.01em;
+  line-height: 1.52;
+  letter-spacing: 0;
 }
 
 body.creative-tool-page::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-  background-size: 32px 32px;
-  opacity: 0.28;
+  content: none;
 }
 
 html[lang="es"] body.creative-tool-page {
@@ -1291,20 +1283,20 @@ body.creative-tool-page h4 {
 }
 
 .creative-tool-page .page {
-  width: min(1500px, calc(100% - 56px));
+  width: min(1180px, calc(100% - 72px));
   max-width: none;
   margin: 0 auto;
-  padding: 30px 0 42px;
+  padding: 36px 0 58px;
 }
 
 .creative-tool-page .page-header {
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  gap: 20px 24px;
+  gap: 16px 20px;
   align-items: end;
-  margin: 0 0 34px;
-  padding: 2px 0 8px;
+  margin: 0 0 26px;
+  padding: 0 0 14px;
   border: 0;
   border-radius: 0;
   background: transparent;
@@ -1313,29 +1305,25 @@ body.creative-tool-page h4 {
 
 .creative-tool-page .page-header-main {
   display: grid;
-  gap: 10px;
+  gap: 12px;
   min-width: 0;
-}
-
-.creative-tool-page .page-eyebrow {
-  margin: 0;
-  color: var(--accent);
 }
 
 .creative-tool-page .page-header h1 {
   margin: 0;
   max-width: none;
-  font-size: clamp(3.35rem, 7.2vw, 6.9rem);
-  line-height: 0.9;
-  letter-spacing: -0.05em;
+  font-size: clamp(2.9rem, 5.6vw, 4.9rem);
+  line-height: 0.94;
+  letter-spacing: -0.035em;
 }
 
 .creative-tool-page .page-intro {
-  max-width: 34ch;
+  max-width: 58ch;
   margin: 0;
-  font-size: 0.98rem;
-  line-height: 1.6;
+  font-size: 1rem;
+  line-height: 1.72;
   color: var(--ink-soft);
+  text-wrap: pretty;
 }
 
 .creative-tool-page .page-header-tools {
@@ -1429,7 +1417,7 @@ body.creative-tool-page h4 {
 .creative-tool-page .technique-result-panel,
 .creative-tool-page .summary-technique-groups {
   display: grid;
-  gap: 18px;
+  gap: 28px;
 }
 
 .creative-tool-page .form-section,
@@ -1438,7 +1426,6 @@ body.creative-tool-page h4 {
 .creative-tool-page .summary-block,
 .creative-tool-page .summary-technique-group {
   border: 0;
-  border-top: 1px solid var(--line-strong);
   border-radius: 0;
   background: transparent;
   box-shadow: none;
@@ -1449,34 +1436,36 @@ body.creative-tool-page h4 {
 .creative-tool-page .review-card-title,
 .creative-tool-page .summary-block-title,
 .creative-tool-page .summary-technique-group-title {
-  padding: 18px 0 0;
+  padding: 0 0 10px;
   border: 0;
   background: transparent;
 }
 
 .creative-tool-page .section-header {
   display: grid;
-  gap: 8px;
+  gap: 6px;
 }
 
 .creative-tool-page .section-header h2 {
   margin: 0;
-  font-size: clamp(2rem, 3.2vw, 3rem);
+  font-size: clamp(1.95rem, 3vw, 3.15rem);
+  line-height: 1.02;
 }
 
 .creative-tool-page .section-header p {
   margin: 0;
-  max-width: 38ch;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: var(--ink-soft);
+  max-width: 60ch;
+  font-size: 0.98rem;
+  line-height: 1.72;
+  color: var(--muted);
+  text-wrap: pretty;
 }
 
 .creative-tool-page .section-body,
 .creative-tool-page .review-card-body,
 .creative-tool-page .summary-block-body,
 .creative-tool-page .technique-category-content {
-  padding: 14px 0 0;
+  padding: 4px 0 0;
   background: transparent;
 }
 
@@ -1494,20 +1483,20 @@ body.creative-tool-page h4 {
 
 .creative-tool-page .field-group {
   grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
-  min-height: 72px;
-  border-bottom: 1px solid var(--line);
+  min-height: 70px;
+  border-bottom: 1px solid rgba(48, 43, 37, 0.1);
 }
 
 .creative-tool-page .field-group > label,
 .creative-tool-page .field-group > .field-label,
 .creative-tool-page .composition-main-label {
-  min-height: 72px;
-  padding: 18px 18px 18px 0;
+  min-height: 70px;
+  padding: 16px 18px 16px 0;
   background: transparent;
-  border-right: 1px solid var(--line);
+  border-right: 1px solid rgba(48, 43, 37, 0.08);
   color: var(--ink-soft);
-  font-size: 0.95rem;
-  line-height: 1.55;
+  font-size: 0.98rem;
+  line-height: 1.6;
 }
 
 .creative-tool-page .field-group input[type="text"],
@@ -1535,7 +1524,7 @@ body.creative-tool-page h4 {
 
 .creative-tool-page .radio-group {
   gap: 18px;
-  min-height: 72px;
+  min-height: 70px;
   padding-left: 20px;
   padding-right: 0;
 }
@@ -1572,9 +1561,78 @@ body.creative-tool-page h4 {
 .creative-tool-page .amount-field,
 .creative-tool-page .composition-main-amount-field {
   border: 1px solid var(--line-strong);
-  border-radius: 14px;
-  background: var(--bg-elevated);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
   box-shadow: none;
+}
+
+.creative-tool-page .texture-option-row,
+.creative-tool-page .judgement-option-row {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 36px;
+  min-height: 86px;
+}
+
+.creative-tool-page .texture-option-row > label,
+.creative-tool-page .judgement-option-row > label {
+  min-height: auto;
+  padding: 18px 0;
+  border-right: 0;
+  background: transparent;
+  color: var(--ink);
+  font-size: 1.06rem;
+  line-height: 1.58;
+}
+
+.creative-tool-page .texture-option-cell,
+.creative-tool-page .judgement-option-cell {
+  min-height: auto;
+  padding: 0;
+  background: transparent;
+}
+
+.creative-tool-page .texture-option-cell {
+  justify-content: flex-end;
+}
+
+.creative-tool-page .judgement-option-cell {
+  gap: 10px;
+  justify-content: flex-start;
+}
+
+.creative-tool-page .texture-checkbox-label {
+  min-width: 54px;
+  min-height: 44px;
+  justify-content: center;
+  padding: 0 16px;
+}
+
+.creative-tool-page .texture-checkbox-label span {
+  display: none;
+}
+
+.creative-tool-page .judgement-radio-label {
+  min-width: 74px;
+  justify-content: center;
+  padding: 9px 16px;
+}
+
+.creative-tool-page .texture-checkbox-label:has(input:checked),
+.creative-tool-page .judgement-radio-label:has(input:checked) {
+  border-color: rgba(49, 75, 68, 0.42);
+  background: rgba(49, 75, 68, 0.08);
+}
+
+.creative-tool-page .texture-checkbox-label input[type="checkbox"],
+.creative-tool-page .judgement-radio-label input[type="radio"] {
+  margin: 0;
+  accent-color: var(--accent);
+}
+
+.creative-tool-page .judgement-radio-label span {
+  font-size: 1rem;
+  line-height: 1;
 }
 
 .creative-tool-page .amount-field-select {
@@ -1704,12 +1762,12 @@ body.creative-tool-page h4 {
 
 @media (max-width: 768px) {
   .creative-tool-page .page {
-    width: min(100% - 30px, 1500px);
-    padding: 18px 0 30px;
+    width: min(100% - 30px, 1180px);
+    padding: 18px 0 34px;
   }
 
   .creative-tool-page .page-header h1 {
-    font-size: clamp(2.8rem, 14vw, 4.9rem);
+    font-size: clamp(2.45rem, 13vw, 4rem);
   }
 
   .creative-tool-page .field-group,
@@ -1722,9 +1780,9 @@ body.creative-tool-page h4 {
   .creative-tool-page .field-group > .field-label,
   .creative-tool-page .composition-main-label {
     min-height: auto;
-    padding: 14px 0 10px;
+    padding: 14px 0 8px;
     border-right: 0;
-    border-bottom: 1px solid var(--line);
+    border-bottom: 0;
   }
 
   .creative-tool-page .field-group input[type="text"],
@@ -1732,6 +1790,23 @@ body.creative-tool-page h4 {
   .creative-tool-page .field-group select,
   .creative-tool-page .radio-group {
     padding-left: 0;
+  }
+
+  .creative-tool-page .texture-option-row,
+  .creative-tool-page .judgement-option-row {
+    grid-template-columns: 1fr;
+    row-gap: 12px;
+    min-height: auto;
+    padding: 14px 0;
+  }
+
+  .creative-tool-page .texture-option-row > label,
+  .creative-tool-page .judgement-option-row > label {
+    padding: 0;
+  }
+
+  .creative-tool-page .texture-option-cell {
+    justify-content: flex-start;
   }
 
   .creative-tool-page .page-action-bar button,
