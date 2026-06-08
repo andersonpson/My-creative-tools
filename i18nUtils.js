@@ -60,8 +60,11 @@ function updatePageTranslations() {
 }
 
 function initLanguageSwitcher() {
+  const headerTools = document.querySelector(".page-header-tools");
   const pageHeader = document.querySelector(".page-header");
-  if (pageHeader) {
+  if (headerTools) {
+    headerTools.appendChild(createLanguageSwitcher());
+  } else if (pageHeader) {
     pageHeader.appendChild(createLanguageSwitcher());
   }
 
