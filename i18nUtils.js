@@ -15,7 +15,6 @@ function updatePageTranslations() {
   });
 
   document.documentElement.lang = i18n.currentLanguage === "es" ? "es" : "zh-CN";
-  document.body.style.visibility = "visible";
   document.dispatchEvent(new CustomEvent("translationsUpdated", { detail: { language: i18n.currentLanguage } }));
 }
 
