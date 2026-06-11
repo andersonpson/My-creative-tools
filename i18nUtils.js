@@ -23,7 +23,5 @@ function initLanguageSwitcher() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  setTimeout(() => {
-    initLanguageSwitcher();
-  }, 100);
+  initLanguageSwitcher();
 });
