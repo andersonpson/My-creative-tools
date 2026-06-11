@@ -491,9 +491,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function createPlaceholderChildren(labelText) {
+    const copy = t("composition-placeholder-next", { label: labelText });
+    if (!copy) {
+      return document.createDocumentFragment();
+    }
+
     const placeholder = document.createElement("div");
     placeholder.className = "composition-placeholder";
-    placeholder.textContent = t("composition-placeholder-next", { label: labelText });
+    placeholder.textContent = copy;
     return placeholder;
   }
 

@@ -85,6 +85,10 @@ body {
   color: var(--text-secondary);
 }
 
+.page-intro:empty {
+  display: none;
+}
+
 .step-page-container {
   position: relative;
 }
@@ -129,6 +133,10 @@ body {
   font-size: 13px;
   line-height: 1.6;
   color: var(--text-secondary);
+}
+
+.section-header p:empty {
+  display: none;
 }
 
 .section-header .section-warning-text {
@@ -300,6 +308,10 @@ body {
   color: var(--text-secondary);
 }
 
+.export-summary-subtitle:empty {
+  display: none;
+}
+
 .summary-block {
   border: 1px solid var(--border-primary);
   border-radius: 16px;
@@ -455,6 +467,10 @@ body {
   line-height: 1.7;
   color: var(--text-muted);
   background: var(--bg-card-soft);
+}
+
+.composition-placeholder:empty {
+  display: none;
 }
 
 .composition-summary {
@@ -804,6 +820,10 @@ body {
   font-size: 14px;
   line-height: 1.6;
   color: var(--text-secondary);
+}
+
+.review-object-subtitle:empty {
+  display: none;
 }
 
 .review-object-target {

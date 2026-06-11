@@ -13,14 +13,6 @@ function createTechniqueItem(result, categoryIndex, itemIndex) {
   title.textContent = itemNumber ? `${itemNumber} ${titleText}` : titleText;
   item.appendChild(title);
 
-  const descriptionText = techniqueConfig?.descriptionKey ? i18n.t(techniqueConfig.descriptionKey) : "";
-  if (descriptionText) {
-    const description = document.createElement("div");
-    description.className = "technique-item-description";
-    description.textContent = descriptionText;
-    item.appendChild(description);
-  }
-
   return item;
 }
 

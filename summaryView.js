@@ -230,19 +230,6 @@ function buildTechniqueGroupsList(engineResult = {}) {
       score.className = "summary-technique-meta";
       score.textContent = i18n.t("summary-technique-score", { score: result.totalScore || 0 });
       item.appendChild(score);
-
-      const descriptionText = getTechniqueDisplayDescription(result);
-      if (descriptionText) {
-        const descriptionTitle = document.createElement("div");
-        descriptionTitle.className = "summary-technique-label";
-        descriptionTitle.textContent = i18n.t("summary-technique-description-title");
-        item.appendChild(descriptionTitle);
-
-        const description = document.createElement("div");
-        description.className = "summary-technique-description";
-        description.textContent = descriptionText;
-        item.appendChild(description);
-      }
       groupSection.appendChild(item);
     });
 
@@ -260,12 +247,15 @@ function buildExportSummaryPanel(formState = {}, engineResult = {}) {
   title.className = "export-summary-title";
   title.textContent = i18n.t("summary-title");
 
-  const subtitle = document.createElement("p");
-  subtitle.className = "export-summary-subtitle";
-  subtitle.textContent = i18n.t("summary-subtitle");
-
   panel.appendChild(title);
-  panel.appendChild(subtitle);
+
+  const subtitleText = i18n.t("summary-subtitle");
+  if (subtitleText) {
+    const subtitle = document.createElement("p");
+    subtitle.className = "export-summary-subtitle";
+    subtitle.textContent = subtitleText;
+    panel.appendChild(subtitle);
+  }
 
   panel.appendChild(createSummaryBlock(
     i18n.t("summary-overview-title"),
