@@ -2,7 +2,7 @@
 // Internationalization (i18n) configuration and management system
 
 const i18n = {
-  currentLanguage: 'zh',
+  currentLanguage: 'es',
 
   supportedLanguages: {
     zh: '中文',
@@ -1027,7 +1027,6 @@ const i18n = {
   setLanguage(lang) {
     if (this.supportedLanguages[lang]) {
       this.currentLanguage = lang;
-      localStorage.setItem('preferredLanguage', lang);
       return true;
     }
     return false;
@@ -1038,10 +1037,7 @@ const i18n = {
   },
 
   init() {
-    const savedLang = localStorage.getItem('preferredLanguage');
-    if (savedLang && this.supportedLanguages[savedLang]) {
-      this.currentLanguage = savedLang;
-    }
+    this.currentLanguage = 'es';
   }
 };
 
