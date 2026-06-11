@@ -1013,9 +1013,24 @@ const i18n = {
   },
 
   t(key, params = {}) {
-    let text = this.translations[this.currentLanguage]?.[key] ||
-      this.translations.zh?.[key] ||
-      key;
+    const currentTranslations = this.translations[this.currentLanguage] || {};
+    const spanishTranslations = this.translations.es || {};
+    const hasCurrentKey = Object.prototype.hasOwnProperty.call(currentTranslations, key);
+    const hasSpanishKey = Object.prototype.hasOwnProperty.call(spanishTranslations, key);
+
+    let text = "";
+
+    if (hasCurrentKey) {
+      text = currentTranslations[key];
+    } else if (this.currentLanguage !== "es" && hasSpanishKey) {
+      text = spanishTranslations[key];
+    }
+
+    if (text === null || text === undefined) {
+      text = "";
+    } else if (typeof text !== "string") {
+      text = String(text);
+    }
 
     Object.entries(params).forEach(([param, value]) => {
       text = text.replace(`\$\{${param}\}`, value);
