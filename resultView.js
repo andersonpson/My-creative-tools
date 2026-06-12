@@ -13,6 +13,23 @@ function createTechniqueItem(result, categoryIndex, itemIndex) {
   title.textContent = itemNumber ? `${itemNumber} ${titleText}` : titleText;
   item.appendChild(title);
 
+  const descriptionText = techniqueConfig?.descriptionKey ? i18n.t(techniqueConfig.descriptionKey) : "";
+  if (descriptionText) {
+    const descriptionBlock = document.createElement("div");
+    descriptionBlock.className = "technique-item-description-block";
+
+    const descriptionLabel = document.createElement("div");
+    descriptionLabel.className = "technique-item-description-label";
+    descriptionLabel.textContent = i18n.t("summary-technique-description-title");
+
+    const description = document.createElement("div");
+    description.className = "technique-item-description";
+    description.textContent = descriptionText;
+
+    descriptionBlock.appendChild(descriptionLabel);
+    descriptionBlock.appendChild(description);
+    item.appendChild(descriptionBlock);
+  }
   return item;
 }
 
